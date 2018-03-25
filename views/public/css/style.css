@@ -1,0 +1,66 @@
+.l_box {
+    height: 100vh;
+}
+
+.c {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bg_purple {
+    background: #8e24aa;
+}
+
+.bg_red {
+    background: #ff1744;
+}
+
+.bg_org {
+    background: #ff6f00;
+}
+
+.pd {
+    padding-left: 33% !important;
+}
+.btn:hover{
+    background: #e91e63;
+}
+.mg{
+    margin-left: 35%;
+    margin-top: 40%;
+    margin-bottom: 5%;
+}
+.mg1{
+    margin-left: 35%;
+    margin-top: 40%;
+    display: none;
+}
+.modal {
+    width: 30% ;
+}
+.ml{
+    margin-left: 25% ;
+}
+@media only screen and (max-width: 768px) {
+    .mg{
+        margin-left: 15%;
+        margin-top: 40%;
+    }
+    .pd {
+        padding-left: 13% !important;
+    }
+    .l_box{
+        width: 50vh;
+    }
+    .mg1{
+        margin-left: 30%;
+        margin-top: 80%;
+        display: inline-block;
+    }
+    .modal{
+        width: 80%;
+    }
+    .ml{
+        margin-left: 15%;
+    }
+}

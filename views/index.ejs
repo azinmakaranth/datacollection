@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Heimdall</title>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="row">
+
+        <div class="col s12 l6 l_box">
+            <div class="chip mg">
+                Please do both the signup's
+                
+            </div>
+            <div class=" valign-wrapper ">
+                <a class="waves-effect waves-light btn  modal-trigger c bg_org" href="#modal1">SignUp</a>
+            </div>
+            <div class="modal" id="modal1">
+                <div class="modal-content">
+                    
+                        <div class="input-field col s12">
+                            <input id="name1" type="text" class="validate" name="uname" required>
+                            <label for="name">Username</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="pass1" type="password" class="validate" onkeyup="count();" name="pass" minlength="8" required>
+                            <label for="password" id="pd_1">Password</label>
+                        </div>
+                        
+                        <button class="btn waves-effect waves-light ml" onclick="form1_sent()">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+
+                    
+                </div>
+            </div>
+            <div class="chip mg1">
+                Scroll down
+                <i class="close material-icons">close</i>
+            </div>
+        </div>
+
+        <div class="col s12 l6 bg_purple l_box " id="main-div2">
+            <a href="#" id="logo-container" class="brand-logo pd">
+                <img src="white.png" style="width: 220px; margin-top: 20%;">
+            </a>
+            <div class="valign-wrapper">
+                <a class="waves-effect waves-light btn c bg_red modal-trigger" href="#modal2">Heimdall SignUp</a>
+            </div>
+            <div class="modal" id="modal2">
+                <div class="modal-content">
+                        <div class="input-field col s12">
+                            <input id="name" type="text" class="validate" name = "uname" required>
+                            <input type="hidden" id="pid" value="<%=pid%>">
+                            <label for="name">Username</label>
+                        </div>
+                        <div class="col s12 ">
+                            <span>Include Characters : '<%=inchar.e1%>' , '<%=inchar.e2%>'</span><br>
+                            <span>Include Symbols : '<%=insym.e1%>' , '<%=insym.e2%>'</span><br>
+                            <span>Include Numbers : '<%=innum.e1%>' , '<%=innum.e2%>'</span><br>
+                            <span>Avoid Characters  : '<%=avchar.e1%>' , '<%=avchar.e2%>'</span><br> 
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="pass" type="password" class="validate" name="pass" onkeyup="check()">
+                            <label for="password" id="pd_2">Password</label>
+                        </div>
+                        <div class="input-field col s12" id = "comment1" style="color:red">
+                        
+                        </div><br>
+                        <button class="btn waves-effect waves-light ml" onclick="form2_sent()">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+
+                </div> 
+            </div> 
+        </div> 
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script>
+            function check(){
+                var enter1 = false;
+                var text = "Include ";
+                var pwd = document.getElementById("pass").value;
+                if(!pwd.includes('<%=inchar.e1%>'))
+                 { 
+                     enter1 = true; 
+                     text += "'<%=inchar.e1%>' "; 
+                }
+                if(!pwd.includes('<%=inchar.e2%>'))
+                 {
+                      enter1 = true; 
+                      text += "'<%=inchar.e2%>' "; 
+                }
+                if(!pwd.includes('<%=insym.e1%>'))
+                 { 
+                     enter1 = true;  
+                     text += "'<%=insym.e1%> "; 
+                }
+                if(!pwd.includes('<%=insym.e2%>'))
+                 { 
+                     enter1 = true;  
+                     text += "'<%=insym.e2%>' "; 
+                }
+                if(!pwd.includes('<%=innum.e1%>'))
+                 {
+                    enter1 = true;  
+                    text += "'<%=innum.e1%>' "; 
+                }
+                if(!pwd.includes('<%=innum.e2%>'))
+                 { 
+                     enter1 = true;  
+                     text += "'<%=innum.e2%>' "; 
+                }
+                var enter2 = false;
+                var comment2 = " Avoid ";
+                if(pwd.includes('<%=avchar.e1%>'))
+                 {
+                    enter2 = true;  
+                    comment2 += "'<%=avchar.e1%>' "; 
+                }
+                if(pwd.includes('<%=avchar.e2%>'))
+                 { 
+                     enter2 = true;  
+                     comment2 += "'<%=avchar.e2%>' "; 
+                }
+                if(pwd.length<7){
+                      document.getElementById('pd_2').innerHTML = "Password (min 7 character)";
+                      document.getElementById('pd_2').style.color = "red";
+                }
+                else{
+                      document.getElementById('pd_2').innerHTML = "Password";
+                      document.getElementById('pd_2').style.color = "#26a69a";
+                }
+                if(!enter1) text = "";
+                if(!enter2) comment2 = "";
+                if(enter2 || enter1)
+                document.getElementById("comment1").innerHTML = text+comment2+".";
+                else
+                document.getElementById("comment1").innerHTML = ""; 
+            }
+            
+        </script>
+</body>
+
+</html>
