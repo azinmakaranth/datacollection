@@ -41,19 +41,22 @@
 .ml{
     margin-left: 25% ;
 }
+.im_plc{
+    width: 220px; margin-top: 20%;
+}
 @media only screen and (max-width: 768px) {
     .mg{
-        margin-left: 15%;
+        margin-left: 22%;
         margin-top: 40%;
     }
     .pd {
-        padding-left: 13% !important;
+        padding-left: 17% !important;
     }
     .l_box{
         width: 50vh;
     }
     .mg1{
-        margin-left: 30%;
+        margin-left: 33%;
         margin-top: 80%;
         display: inline-block;
     }
@@ -62,5 +65,8 @@
     }
     .ml{
         margin-left: 15%;
+    }
+    .im_plc{
+        margin-top: 50%;
     }
 }
