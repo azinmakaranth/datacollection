@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Heimdall|Data_Collection</title>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col s12 wh z-depth-5">
+                <form action="">
+                    <div class="input-field col s6 offset-s3 ed">
+                        <input id="name" type="text" class="validate">
+                        <!-- id and for should be same -->
+                        <label for="name">Username</label>
+                    </div>
+                    <div id="modal1" class="modal">
+                            <div class="modal-content">
+                              <h4>Instructions</h4>
+                              <ol>
+                                  <li>Please fill all the inputs.</li>
+                                  <li>While creating password try to satisfy the conditions.</li>
+                                  <li>Try to create a password you can remember.</li>
+                                  <li>Choose 2 colors which is your fav.</li>
+                              </ol>
+                            </div>
+                    </div>
+                    <div class="col s12 m6 l6">
+                        <h5 class="center-align">Using Conventional Method</h5>
+                        <div class="input-field col s8 offset-s2">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l6">
+                        <h5 class="center-align">Using Heimdall</h5>
+                        <div class="input-field col s8 offset-s2">
+                            <input id="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                            <span>Include Characters : ' A' , ' b'
+                            </span>
+                            <br>
+                            <span>Include Symbols : ' c' , ' e'
+                            </span>
+                            <br>
+                            <span>Include Numbers : ' 1' , ' 2'
+                            </span>
+                            <br>
+                            <span>Avoid Characters : ' A' , ' m'
+                            </span>
+                            <br>
+                            <div class="input-field col s12">
+                                <select name="color1" required id="col1">
+                                    <!--option selected> Select Color2 </option---->
+                                    <option value="1" style="background:red">Red</option>
+                                    <option value="2" style="background:green">Green</option>
+                                    <option value="3" style="background:yellow">Yellow</option>
+                                    <option value="4" style="background:blue">Blue</option>
+                                    <option value="5" style="background:orange">Orange</option>
+                                    <option value="6" style="background:purple">Purple</option>
+                                    <option value="7" style="background:cyan">Cyan</option>
+
+                                    <option value="8" style="background:lime">Lime</option>
+                                    <option value="9" style="background:pink">Pink</option>
+                                    <option value="10" style="background:teal">Teal</option>
+
+                                    <option value="11" style="background:brown">Brown</option>
+                                    <option value="12" style="background:beige">Beige</option>
+                                    <option value="13" style="background:maroon">Maroon</option>
+                                    <option value="14" style="background:mint">Mint</option>
+                                    <option value="15" style="background:olive">Olive</option>
+                                    <option value="16" style="background:coral">Coral</option>
+                                    <option value="17" style="background:navy">Blue</option>
+                                    <option value="18" style="background:grey">Grey</option>
+                                    <option value="19" style="background:white">White</option>
+                                    <option value="20" style="background:black">Black</option>
+                                </select>
+                            </div>
+                            <div class="input-field col s12">
+                                <select name="color2" required id="col2">
+                                    <!--option selected> Select Color2 </option---->
+                                    <option value="1" style="background:red">Red</option>
+                                    <option value="2" style="background:green">Green</option>
+                                    <option value="3" style="background:yellow">Yellow</option>
+                                    <option value="4" style="background:blue">Blue</option>
+                                    <option value="5" style="background:orange">Orange</option>
+                                    <option value="6" style="background:purple">Purple</option>
+                                    <option value="7" style="background:cyan">Cyan</option>
+
+                                    <option value="8" style="background:lime">Lime</option>
+                                    <option value="9" style="background:pink">Pink</option>
+                                    <option value="10" style="background:teal">Teal</option>
+
+                                    <option value="11" style="background:brown">Brown</option>
+                                    <option value="12" style="background:beige">Beige</option>
+                                    <option value="13" style="background:maroon">Maroon</option>
+                                    <option value="14" style="background:mint">Mint</option>
+                                    <option value="15" style="background:olive">Olive</option>
+                                    <option value="16" style="background:coral">Coral</option>
+                                    <option value="17" style="background:navy">Blue</option>
+                                    <option value="18" style="background:grey">Grey</option>
+                                    <option value="19" style="background:white">White</option>
+                                    <option value="20" style="background:black">Black</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 offset-s5">
+                        <button class="btn waves-effect waves-light ml">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

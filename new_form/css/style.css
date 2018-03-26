@@ -1,0 +1,28 @@
+body{
+    background: #8e24aa;
+    background: -webkit-linear-gradient(45deg, #8e24aa 0%, #ff6e40 100%);
+  background: linear-gradient(45deg, #8e24aa 0%, #ff6e40 100%);
+}
+.wh{
+    background: white;
+    margin-top: 5%;
+
+}
+.ml{
+    margin-bottom: 3%;
+}
+.ed{
+    margin-top: 5%;
+    margin-bottom: 3%;
+
+}
+span{
+    color: red;
+}
+@media only screen and (max-width: 768px){
+    .row .col.offset-s5 {
+
+        margin-left: 25%;
+    
+    }
+}
