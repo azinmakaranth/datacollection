@@ -24,7 +24,7 @@ app.get('/',function(req,res) {
    y =Math.floor(y)
   else
    y= Math.ceil(y)
-if(y == 0){  
+if(y>0){  
   hs.exploration().then((val)=> {
     res.render('index',{
       insym : val[0],

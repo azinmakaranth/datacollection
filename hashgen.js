@@ -4,7 +4,7 @@ const crypto = require('crypto');
 var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'htcmone8',
+  password : 'htconem8',
   database : 'dsalt'
 });
 
