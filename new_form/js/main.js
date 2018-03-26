@@ -12,7 +12,7 @@ $(document).ready(function() {
         $('#modal1').modal('open');
 
         //or by click on trigger
-        $('.trigger-modal').modal();
+        //$('.trigger-modal').modal();
 
     }); // end of document ready
 })(jQuery);
