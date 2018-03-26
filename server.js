@@ -75,11 +75,10 @@ app.post('/post_', function(req, res) {
     var pid = parseInt(req.body.pid);
     var color1 = parseInt(req.body.color1);
     var color2 = parseInt(req.body.color2);
-    
     if(uname != '' && password != ''){
     let now = new Date();
     var login_time = date.format(now, 'YYYYMMDDHHmm');
-    console.log(login_time)
+
     hg.salt_hash_gen(password,login_time,color1,color2)
      .then( (key) => {
        //hg.updatedb(uname,email,login_time,key);
