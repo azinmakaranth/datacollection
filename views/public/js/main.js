@@ -12,7 +12,9 @@
 
     }); // end of document ready
 })(jQuery);
-
+$(document).ready(function() {
+    $('select').material_select();
+});
 function count(){
     var val = document.getElementById('pass1').value;
     if(val.length<7){
@@ -46,7 +48,9 @@ function form1_sent() {
     var uname = document.getElementById("name").value;
     var pass = document.getElementById("pass").value;
     var pid = document.getElementById("pid").value;
-
+    var color1 = document.getElementById("col1").value;
+    var color2 = document.getElementById("col2").value;
+    console.log(color1,color2,"Colorsss....")
     xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         document.getElementById("modal2").innerHTML = '<div class="input-field col s12"><center>'+this.responseText+'</center></div><br><br><br>'
@@ -56,5 +60,5 @@ function form1_sent() {
    };
    xhttp.open("POST", "post_", true);
    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-   xhttp.send("uname="+uname+"&pass="+pass+"&pid="+pid);
+   xhttp.send("uname="+uname+"&pass="+pass+"&pid="+pid+"&color1="+color1+"&color2="+color2);
  }

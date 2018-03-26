@@ -1,6 +1,7 @@
 const db = require('./database.js');
 const processPass = require('./processPass');
 const hs = require('./helpServer.js');
+const hg = require('./hashgen.js');
 
 const express = require('express');
 const ejs = require('ejs');
@@ -57,7 +58,14 @@ app.post('/post_ord', function(req, res) {
     if(uname != '' && password != ''){
     db.ord.query("insert into password(pass) values('"+password+"')", (error) => {
        if(error) throw error 
+
     })
+    hg.hashGen(password,'salt',16).then((hashpass)=>{
+      db.ord.query("insert into passhash(hash) values('"+hashpass+"')", (error) => {
+        if(error) throw error 
+ 
+     })
+    });
     res.send("Thank You For Your Response");
    }
 });
@@ -65,9 +73,23 @@ app.post('/post_', function(req, res) {
     var uname = req.body.uname;
     var password = req.body.pass;
     var pid = parseInt(req.body.pid);
+    var color1 = parseInt(req.body.color1);
+    var color2 = parseInt(req.body.color2);
+    
     if(uname != '' && password != ''){
-    processPass.processAndUpdateTable(password,pid).then(() => {} );
-   
+    let now = new Date();
+    var login_time = date.format(now, 'YYYYMMDDHHmm');
+    console.log(login_time)
+    hg.salt_hash_gen(password,login_time,color1,color2)
+     .then( (key) => {
+       //hg.updatedb(uname,email,login_time,key);
+       processPass.processAndUpdateTable(password,pid).then(() => {} );
+       db.ord.query("insert into passheimdall(hash) values('"+key+"')", (error) => {
+        if(error) throw error 
+             
+       })
+ 
+     });
     res.send("Thank You For Your Response");
     }
 });

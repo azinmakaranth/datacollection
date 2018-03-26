@@ -128,7 +128,7 @@ return new Promise( function(resolve, reject){
    });
 }
 /*
-salt_hash_gen('','','',3,1).
+salt_hash_gen('','','',3,1). 
 then((key)=>{
   salt_hash_gen('','','',3,1).
   then((key1)=>{
@@ -177,5 +177,6 @@ function check_hash(uname, password, color1, color2){
 module.exports = {
   updatedb, //updatedb(name, email, login_time, hash)
   salt_hash_gen, //  (password,login_time,color1,color2)
-  check_hash //check_hash(uname, password, color1, color2, hash)
+  check_hash, //check_hash(uname, password, color1, color2, hash)
+  hashGen
 };
