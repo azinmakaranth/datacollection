@@ -32,7 +32,7 @@ app.get('/',function(req,res) {
      y =Math.floor(y)
     else
      y= Math.ceil(y)
-  if(y==0){  
+  if(y>=0){  
     hs.exploration().then((val)=> {
       res.render('form',{
         insym : val[0],
