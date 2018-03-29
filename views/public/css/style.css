@@ -1,72 +1,33 @@
-.l_box {
-    height: 100vh;
-}
-
-.c {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.bg_purple {
+body{
     background: #8e24aa;
+    background: -webkit-linear-gradient(45deg, #8e24aa 0%, #ff6e40 100%);
+  background: linear-gradient(45deg, #8e24aa 0%, #ff6e40 100%);
 }
+.wh{
+    background: white;
+    margin-top: 5%;
 
-.bg_red {
-    background: #ff1744;
-}
-
-.bg_org {
-    background: #ff6f00;
-}
-
-.pd {
-    padding-left: 33% !important;
-}
-.btn:hover{
-    background: #e91e63;
-}
-.mg{
-    margin-left: 35%;
-    margin-top: 40%;
-    margin-bottom: 5%;
-}
-.mg1{
-    margin-left: 35%;
-    margin-top: 40%;
-    display: none;
-}
-.modal {
-    width: 30% ;
 }
 .ml{
-    margin-left: 25% ;
+    margin-bottom: 3%;
 }
-.im_plc{
-    width: 220px; margin-top: 20%;
+.ed{
+    margin-top: 5%;
+    margin-bottom: 3%;
+
 }
-@media only screen and (max-width: 768px) {
-    .mg{
-        margin-left: 22%;
-        margin-top: 40%;
+span{
+    color: rgb(96, 11, 192);
+}
+@media only screen and (max-width: 768px){
+    .row .col.offset-s5 {
+
+        margin-left: 25%;
+    
     }
-    .pd {
-        padding-left: 17% !important;
-    }
-    .l_box{
-        width: 50vh;
-    }
-    .mg1{
-        margin-left: 33%;
-        margin-top: 80%;
-        display: inline-block;
-    }
-    .modal{
-        width: 80%;
-    }
-    .ml{
-        margin-left: 15%;
-    }
-    .im_plc{
-        margin-top: 50%;
+    .wh{
+        background: white;
+        margin-top: 5%;
+        margin-left: 4% !important;
     }
 }

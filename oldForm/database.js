@@ -3,24 +3,24 @@ const mysql = require('mysql');
 var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '123',
+  password : 'htconem8',
   database : 'heimdall'
 });
 var con_d = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '123',
+  password : 'htconem8',
   database : 'dsalt'
 });
-var con_dh = mysql.createConnection({
+
+var ord = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '123',
-  database : 'dataheimdall'
+  password : 'htconem8',
+  database : 'ord'
 });
-
 module.exports = {
   con,
   con_d,
-  con_dh
+  ord
 };

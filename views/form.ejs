@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Heimdall|Data_Collection</title>
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+
+            <div class="col s11 m12 l12 wh z-depth-5" id="here">
+               <!---- <form action="/postdata" method="post" id='form_'> ---->
+                    <div class="input-field col s10 m6 l6 offset-s1 offset-m3 offset-l3 ed">
+                        <input id="_uname" type="text" class="validate" name="uname" onkeyup="check_uname()">
+                        <!-- id and for should be same -->
+                        <label for="name">Username</label>
+                        <div id= "err_uname"></div>
+                    </div>
+                    <script>
+                      function check_uname() {
+                        var xhttp = new XMLHttpRequest();
+                        var uname = document.getElementById("_uname").value;
+                        xhttp.onreadystatechange = function() {
+                         if (this.readyState == 4 && this.status == 200) {
+                          document.getElementById('err_uname').innerHTML = this.responseText
+                          if(this.responseText == 'Invalid Username' )
+                            { 
+                              document.getElementById('err_uname').style.color = 'red'   
+                            }
+                           else 
+                             document.getElementById('err_uname').style.color  = '#2ecc71' 
+                         }
+                        };
+                        xhttp.open("GET", "check?uname="+uname, true);
+                        xhttp.send();
+                        }
+                    </script>
+                    <div id="modal1" class="modal">
+                            <div class="modal-content">
+                              <h4>Instructions</h4>
+                              <ol>
+                                  <li>Please fill all the inputs.</li>
+                                  <li>While creating password try to satisfy the conditions.</li>
+                                  <li>Try to create a password you can remember.</li>
+                                  <li>Choose 2 colors which is your fav.</li>
+                              </ol>
+                            </div>
+                    </div>
+                    <div class="col s12 m6 l6">
+                        <h5 class="center-align">Using Conventional Method</h5>
+                        <div class="input-field col s10 m8 l8 offset-s1 offset-m2 offset-l2">
+                            <input id="_pwd_old" type="password" class="validate" name="pwd_old">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m6 l6">
+                        <h5 class="center-align">Using Heimdall</h5>
+                        <div class="input-field col s10 m8 l8 offset-s1 offset-m2 offset-l2">
+                            <input type="hidden" id="_pid" value="<%=pid%>" name="pid">
+                            <input id="_pwd_new" type="password" class="validate" name="pwd_new" onkeyup="check()">
+                            <label for="password" id="pd_2">Password</label>
+                            <div id="comment1" style="color:red;"></div>
+                            <br>
+                            <span>Include Characters : '<%=inchar.e1%>' , '<%=inchar.e2%>'
+                            </span>
+                            <br>
+                            <span>Include Symbols : '<%=insym.e1%>' , '<%=insym.e2%>'
+                            </span>
+                            <br>
+                            <span>Include Numbers : '<%=innum.e1%>' , '<%=innum.e2%>'
+                            </span>
+                            <br>
+                            <span>Avoid Characters : '<%=avchar.e1%>' , '<%=avchar.e2%>'
+                            </span>
+                            <br>
+                            
+                            <div class="input-field col s12">
+                                <select name="color1" required id="col1">
+                                    <!--option selected> Select Color2 </option---->
+                                    <option value="1" style="background:red">Red</option>
+                                    <option value="2" style="background:green">Green</option>
+                                    <option value="3" style="background:yellow">Yellow</option>
+                                    <option value="4" style="background:blue">Blue</option>
+                                    <option value="5" style="background:orange">Orange</option>
+                                    <option value="6" style="background:purple">Purple</option>
+                                    <option value="7" style="background:cyan">Cyan</option>
+
+                                    <option value="8" style="background:lime">Lime</option>
+                                    <option value="9" style="background:pink">Pink</option>
+                                    <option value="10" style="background:teal">Teal</option>
+
+                                    <option value="11" style="background:brown">Brown</option>
+                                    <option value="12" style="background:beige">Beige</option>
+                                    <option value="13" style="background:maroon">Maroon</option>
+                                    <option value="14" style="background:mint">Mint</option>
+                                    <option value="15" style="background:olive">Olive</option>
+                                    <option value="16" style="background:coral">Coral</option>
+                                    <option value="17" style="background:navy">Blue</option>
+                                    <option value="18" style="background:grey">Grey</option>
+                                    <option value="19" style="background:white">White</option>
+                                    <option value="20" style="background:black">Black</option>
+                                </select>
+                            </div>
+                            <div class="input-field col s12">
+                                <select name="color2" required id="col2">
+                                    <!--option selected> Select Color2 </option---->
+                                    <option value="1" style="background:red">Red</option>
+                                    <option value="2" style="background:green">Green</option>
+                                    <option value="3" style="background:yellow">Yellow</option>
+                                    <option value="4" style="background:blue">Blue</option>
+                                    <option value="5" style="background:orange">Orange</option>
+                                    <option value="6" style="background:purple">Purple</option>
+                                    <option value="7" style="background:cyan">Cyan</option>
+
+                                    <option value="8" style="background:lime">Lime</option>
+                                    <option value="9" style="background:pink">Pink</option>
+                                    <option value="10" style="background:teal">Teal</option>
+
+                                    <option value="11" style="background:brown">Brown</option>
+                                    <option value="12" style="background:beige">Beige</option>
+                                    <option value="13" style="background:maroon">Maroon</option>
+                                    <option value="14" style="background:mint">Mint</option>
+                                    <option value="15" style="background:olive">Olive</option>
+                                    <option value="16" style="background:coral">Coral</option>
+                                    <option value="17" style="background:navy">Blue</option>
+                                    <option value="18" style="background:grey">Grey</option>
+                                    <option value="19" style="background:white">White</option>
+                                    <option value="20" style="background:black">Black</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 offset-s5">
+                        <button class="btn waves-effect waves-light ml" onclick="submitFunc()">Submit
+                            <i class="material-icons right">send</i>
+                        </button>
+                        <script>
+                           function retcheck(){
+                                var pwd = document.getElementById("_pwd_new").value;
+                                if(!pwd.includes('<%=inchar.e1%>'))
+                                { 
+                                  return(false)
+                                }
+                                else if(!pwd.includes('<%=inchar.e2%>'))
+                                {
+                                    return(false)
+                                }
+                                else if(!pwd.includes('<%=insym.e1%>'))
+                                {
+                                    return(false) 
+                                }
+                                else if(!pwd.includes('<%=insym.e2%>'))
+                                {
+                                    return(false)     
+                                }
+                                else if(!pwd.includes('<%=innum.e1%>'))
+                                {
+                                    return(false)
+                                }
+                                else if(!pwd.includes('<%=innum.e2%>'))
+                                { 
+                                     return(false)
+                                }
+                                else if(pwd.includes('<%=avchar.e1%>'))
+                                {
+                                    return(false)
+                                }
+                                if(pwd.includes('<%=avchar.e2%>'))
+                                { 
+                                    return(false)
+                                }
+                                else if(pwd.length<7){
+                                    return(false)
+                                }
+                               else{
+                                    return(true)
+                                } 
+                           }
+                           function submitFunc(){
+                               var pwd_new = document.getElementById('_pwd_new').value
+                               var pwd_old = document.getElementById('_pwd_old').value
+                               var uname = document.getElementById('_uname').value
+                               var pid = document.getElementById("_pid").value;
+                               var color1 = document.getElementById("col1").value
+                               var color2 = document.getElementById("col2").value
+                               var err = document.getElementById('err_uname').value
+                               if(pwd_new == '' || pwd_old == '' || uname == '')
+                                  alert("Missing Input(s)");
+                               else if(!retcheck())
+                                  alert("Password Policy is not followed ")
+                               else 
+                                 {
+                                    var xhttp = new XMLHttpRequest();
+                                    xhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        document.getElementById('here').innerHTML = this.responseText
+                                     }
+                                   };
+                                   xhttp.open("POST", "postdata", true); 
+                                   var obj ={ uname : uname, 
+                                              pwd_new : pwd_new,
+                                              pwd_old : pwd_old,
+                                              pid : pid,
+                                              color1 : color1,
+                                              color2 : color2 }
+                                   var data = JSON.stringify(obj)
+                                   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                                   xhttp.send(data);
+                                 }
+                           }
+                        </script>
+                    </div>
+                <!---</form> ---->
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script>
+            function check(){
+                var enter1 = false;
+                var text = "Include "; var f=false;
+                var pwd = document.getElementById("_pwd_new").value;
+                if(!pwd.includes('<%=inchar.e1%>'))
+                 { 
+                     enter1 = true; 
+                     text += "'<%=inchar.e1%>' "; 
+                }
+                if(!pwd.includes('<%=inchar.e2%>'))
+                 {
+                      enter1 = true; 
+                      text += "'<%=inchar.e2%>' "; 
+                }
+                if(!pwd.includes('<%=insym.e1%>'))
+                 { 
+                     enter1 = true;  
+                     text += "'<%=insym.e1%> "; 
+                }
+                if(!pwd.includes('<%=insym.e2%>'))
+                 { 
+                     enter1 = true;  
+                     text += "'<%=insym.e2%>' "; 
+                }
+                if(!pwd.includes('<%=innum.e1%>'))
+                 {
+                    enter1 = true;  
+                    text += "'<%=innum.e1%>' "; 
+                }
+                if(!pwd.includes('<%=innum.e2%>'))
+                 { 
+                     enter1 = true;  
+                     text += "'<%=innum.e2%>' "; 
+                }
+                var enter2 = false;
+                var comment2 = " Avoid ";
+                if(pwd.includes('<%=avchar.e1%>'))
+                 {
+                    enter2 = true;  
+                    comment2 += "'<%=avchar.e1%>' "; 
+                }
+                if(pwd.includes('<%=avchar.e2%>'))
+                 { 
+                     enter2 = true;  
+                     comment2 += "'<%=avchar.e2%>' "; 
+                }
+                if(pwd.length<7){
+                      f = true;
+                      document.getElementById('pd_2').innerHTML = "Password (min 7 character)";
+                      document.getElementById('pd_2').style.color = "red";
+                }
+                else{
+                      document.getElementById('pd_2').innerHTML = "Password";
+                      document.getElementById('pd_2').style.color = "#26a69a";
+                }
+                if(!enter1) text = "";
+                if(!enter2) comment2 = "";
+                if(enter2 || enter1) {
+                 document.getElementById("comment1").innerHTML = text+comment2+".";
+                 if(!f)
+                   {
+                      document.getElementById('pd_2').innerHTML = "Password (Follow The Policy)";
+                      document.getElementById('pd_2').style.color = "red";
+                   }
+                }
+                else
+                document.getElementById("comment1").innerHTML = ''; 
+            }
+            
+        </script>
+</body>
+
+</html>

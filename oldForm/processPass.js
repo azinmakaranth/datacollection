@@ -173,42 +173,41 @@ var processAndUpdateTable = (password,pid) => {
        if(/[a-z]/.test(e)){
         var q = "UPDATE freqtabsmall SET freq = freq+1 where symbol = '"+e+"';";
         db.con.query(q, (error) => {
-        if (error) console.log("Error Query : ",q)
-        
+        if (error) throw error;
+        console.log("Executed Query :- "+ q +" "+ e );
         });
        }
        else if(/[A-Z]/.test(e)){
         var qu = "UPDATE freqtabcap SET freq = freq+1 where symbol = '"+e+"';";
         db.con.query(qu, (error) => {
-        if (error) console.log("Error Query : ",qu)
-        
+        if (error) throw error;
+        console.log(`Executed Query :- ${qu}`);
         });
        }
        else if(/[0-9]/.test(e)){
         var quer = "UPDATE freqtabnum SET freq = freq+1 where symbol = '"+e+"';";
         db.con.query(quer, (error) => {
-        if (error) console.log("Error Query : ",quer)
-        
+        if (error) throw error;
+        console.log(`Executed Query :- ${quer}`);
         });
        }
        else{
         var que = "UPDATE freqtab SET freq = freq+1 where symbol = '"+e+"';";
         db.con.query(que, (error) => {
-        if (error) console.log("Error Query : ",que)
-
+        if (error) throw error;
+        console.log(`Executed Query :- ${que}`);
         });
-       }
+       } 
     });
-  
     var q1 = "insert into pass(pass,pid) values('"+password+"',"+pid+");";
         db.con.query(q1, (error) => {
-        if (error) console.log(q1)
+        if (error) console.log(q1);
         var qw = "select id from  pass where pass = '"+password+"';";
         db.con.query(qw, (error,r) => {
         if (error) throw error;
-              addNode(r[0].id,password)
+              addNode(r[0].id,password);
         });
-    }); 
+    });
     resolve();
   });
 }

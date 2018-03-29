@@ -1,19 +1,18 @@
-const db = require('./database.js');
+//const db = require('./database.js');
 const mysql = require('mysql');
 const crypto = require('crypto');
-/*
-var db.con_d = mysql.createConnection({
+var con = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : '123',
+  password : 'htconem8',
   database : 'dsalt'
-});  */
+});
 
 function getCat(x) {
   return new Promise( function(resolve, reject) {
-         db.con_d.query(`SELECT category FROM seed_map WHERE row_id='${x+1}'`, function (error, cat, fields) {
+         con.query(`SELECT category FROM seed_map WHERE row_id='${x+1}'`, function (error, cat, fields) {
             if (error) throw error;
-            db.con_d.query(`SELECT count(${cat[0].category}) cnt FROM seeds_warehouse`, function (error, results, fields) {
+            con.query(`SELECT count(${cat[0].category}) cnt FROM seeds_warehouse`, function (error, results, fields) {
                if (error) throw error;
                resolve(results[0].cnt);
             });
@@ -22,9 +21,9 @@ function getCat(x) {
 }
 function getCat2(x,y) {
   return new Promise( function(resolve, reject) {
-         db.con_d.query(`SELECT category FROM seed_map WHERE row_id='${x+1}'`, function (error, cat, fields) {
+         con.query(`SELECT category FROM seed_map WHERE row_id='${x+1}'`, function (error, cat, fields) {
             if (error) throw error;
-            db.con_d.query(`SELECT ${cat[0].category} as s FROM seeds_warehouse WHERE seq_no = '${y}'`, function (error, seed, fields) {
+            con.query(`SELECT ${cat[0].category} as s FROM seeds_warehouse WHERE seq_no = '${y}'`, function (error, seed, fields) {
                if (error) throw error;
                if(typeof seed[0] == "undefined")
                     resolve("");
@@ -141,13 +140,13 @@ then((key)=>{
 
 
 function updatedb(name, email, login_time, hash){
-  db.con_d.query(`INSERT INTO name_time_warehouse(uname,email,logintime) VALUES('${name}','${email}','${login_time}')`, function (error, res1, fields) {
+  con.query(`INSERT INTO name_time_warehouse(uname,email,logintime) VALUES('${name}','${email}','${login_time}')`, function (error, res1, fields) {
      if (error)
         console.log(`INSERT INTO name_time_warehouse(uname,email,logintime) VALUES('${name}','${email}','${login_time}')`);;
-      db.con_d.query(`SELECT uid FROM name_time_warehouse WHERE uname='${name}' AND email='${email}'`, function (error, res2, fields) {
+      con.query(`SELECT uid FROM name_time_warehouse WHERE uname='${name}' AND email='${email}'`, function (error, res2, fields) {
       if (error)
            console.log(`SELECT uid FROM name_time_warehouse WHERE uname='${name}' AND email='${email}'`);;
-        db.con_d.query(`INSERT INTO hash_warehouse(uid,hashval) VALUES('${res2[0].uid}','${hash}')`, function (error, res3, fields) {
+        con.query(`INSERT INTO hash_warehouse(uid,hashval) VALUES('${res2[0].uid}','${hash}')`, function (error, res3, fields) {
            if (error)
                console.log(`INSERT INTO hash_warehouse(uid,hashval) VALUES('${res2[0].uid}','${hash}')`);;
 
@@ -158,11 +157,11 @@ function updatedb(name, email, login_time, hash){
 
 function check_hash(uname, password, color1, color2){
   return new Promise( function(resolve, reject){
-    db.con_d.query(`SELECT uid,logintime FROM name_time_warehouse WHERE uname='${uname}'`, function (error, row, fields) {
+    con.query(`SELECT uid,logintime FROM name_time_warehouse WHERE uname='${uname}'`, function (error, row, fields) {
        if (error) throw error;
        salt_hash_gen(password,row[0].logintime,color1,color2).
        then((key)=>{
-            db.con_d.query(`SELECT hashval FROM hash_warehouse WHERE uid='${row[0].uid}'`, function (error, hash, fields) {
+            con.query(`SELECT hashval FROM hash_warehouse WHERE uid='${row[0].uid}'`, function (error, hash, fields) {
              if (error) throw error;
                 console.log(key,hash[0].hashval);
                 if(key === hash[0].hashval)
@@ -179,5 +178,5 @@ module.exports = {
   updatedb, //updatedb(name, email, login_time, hash)
   salt_hash_gen, //  (password,login_time,color1,color2)
   check_hash, //check_hash(uname, password, color1, color2, hash)
-  hashGen // (secret,salts,bits)
+  hashGen
 };
